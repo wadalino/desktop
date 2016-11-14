@@ -241,6 +241,7 @@ mschub.fnPool = function(fngroup, fn, elem, params) {
       loadBrowsePage: function(elem, params, fns) {
         mschub.catalogBrowseItems = [];
         musicoinService.loadBrowsePage(params.page, params.keyword, function(result) {
+          console.log("Setting mschub.catalogBrowseItems with browse result.");
           mschub.catalogBrowseItems = result;
         });
         return {result: "pending"};

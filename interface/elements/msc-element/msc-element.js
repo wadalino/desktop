@@ -123,7 +123,9 @@
           }
         };
 
+        console.log("Updating UI with new browse categories: " + JSON.stringify(newGroups));
         this.browseViewItems = newGroups.map(toViewGroup);
+        console.log("Updating UI ... ok");
       },
       _computeIconForCategory: function(category) {
         if (category.id == 'new-releases') return "social:whatshot";

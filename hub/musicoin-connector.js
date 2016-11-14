@@ -58,12 +58,6 @@ MusicoinConnector.prototype.loadMyWorks = function (address) {
 };
 
 MusicoinConnector.prototype.loadBrowsePage = function (page, keywords, callback) {
-  if (page == "favorites") {
-    // TODO:
-    // callback(this.loadFavoritesFromFile(callback));
-    return;
-  }
-
   var propertiesObject = {page_id: page, query: keywords};
   request({
     url: this.musicoinContentURL,
@@ -71,9 +65,11 @@ MusicoinConnector.prototype.loadBrowsePage = function (page, keywords, callback)
     json: true
   }, function (error, response, body) {
     if (!error && response.statusCode === 200) {
+      console.log("Got browse page: response: " + JSON.stringify(response) + ", body: " + JSON.stringify(body.content));
       callback(body.content);
     }
     else {
+      console.log("browse page error: err: " + JSON.stringify(error));
       console.log(error);
     }
   }.bind(this))
